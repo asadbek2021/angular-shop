@@ -1,6 +1,28 @@
-<div *ngIf="carts.length; else emptyCartList">
-  <app-cart [cart]="cart" *ngFor="let cart of carts; trackBy: tracByCarts"></app-cart>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Purchased Products</h2>
+  </div>
+  <hr>
+ <div class="row" *ngIf="carts.length; else emptyCartList">
+  <div class="col-xs-12 cart-list">
+    <app-cart [cart]="cart" *ngFor="let cart of carts; trackBy: tracByCarts"></app-cart>
+  </div>
+  <div class="col-xs-6 cart-total">
+    <mat-card>
+     <mat-card-content>
+      <p>Total Cost: {{totalCost}}</p>
+     </mat-card-content>
+    </mat-card>
+    <mat-card>
+     <mat-card-content>
+      <p>Total Quantity: {{totalQuantity}}</p>
+     </mat-card-content>
+    </mat-card>
+  </div>
+ </div>
+  <ng-template #emptyCartList>
+   <div class=" col-xs-12 empty-wrapper">
+    <h3>Empty Cart List</h3>
+   </div>
+  </ng-template>
 </div>
-<ng-template #emptyCartList>
-  <p>Empty Cart List</p>
-</ng-template>

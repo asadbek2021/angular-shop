@@ -3,30 +3,29 @@ import { Cart } from '../models/cart.model';
 import { ProductsService } from 'src/app/product/services/products.service';
 import { Product } from 'src/app/product/model/product.model';
 
-const carts: Cart[] = [
-  {
-    id: '1',
-    productId: '2',
-    productCount: 3
-  },
-  {
-    id: '2',
-    productId: '4',
-    productCount: 4
-  }
-];
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private carts: Cart[] = carts;
+  get totalCost(): number {
+    return this.carts.reduce((total,cart) => {
+      const product = this.productService.getProduct(cart.productId);
+      return total + (product.price * cart.productCount);
+    }, 0)
+  };
+  get totalQuantity(): number {
+    return this.carts.reduce((total, cart)=> cart.productCount + total, 0);
+  };
+
+  private carts: Cart[] = [];
+
 
   constructor(private productService: ProductsService) { }
 
   getCarts(): Cart[] {
-    return this.carts.slice();
+    return this.carts;
   }
 
   getProductName(productId: string): string {

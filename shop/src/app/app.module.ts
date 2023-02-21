@@ -3,19 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CartComponent, CartListComponent } from './cart/components';
 import { ProductModule } from './product/product.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartModule } from './cart/cart.module';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartListComponent,
-    CartComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    ProductModule
+    ProductModule,
+    CartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

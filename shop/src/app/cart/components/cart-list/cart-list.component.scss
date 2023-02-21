@@ -1,0 +1,29 @@
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 40vh;
+}
+
+.empty-wrapper{
+  padding: 10px 15px;
+  h3 {
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #a5a3a3fd;
+    text-transform: uppercase;
+  }
+}
+
+.cart-total{
+  display: flex;
+  gap: 40px;
+
+
+
+
+  & mat-card {
+    background: #fff;
+  }
+}

@@ -73,14 +73,18 @@ const products: Product[]=[
 })
 export class ProductsService {
 
+  private products: Product[] = products;
+
   constructor() { }
 
   getProducts() {
-    return products;
+    return this.products;
   }
 
   getProduct(productId: string): Product {
-    return this.getProducts().find(product => product.id === productId)!;
+    return this.products.find(product => product.id === productId)!;
   }
+
+
 
 }
