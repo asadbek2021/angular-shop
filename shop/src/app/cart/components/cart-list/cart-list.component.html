@@ -5,7 +5,12 @@
   <hr>
  <div class="row" *ngIf="carts.length; else emptyCartList">
   <div class="col-xs-12 cart-list">
-    <app-cart [cart]="cart" *ngFor="let cart of carts; trackBy: tracByCarts"></app-cart>
+    <app-cart
+      [cart]="cart"
+      *ngFor="let cart of carts; trackBy: tracByCarts"
+      (increaseQuantity)="onIncreaseCount(cart.id)"
+      (increaseQuantity)="onDecreaseCount(cart.id)"
+      (deleteCart)="onDeleteCart(cart.id)"></app-cart>
   </div>
   <div class="col-xs-6 cart-total">
     <mat-card>

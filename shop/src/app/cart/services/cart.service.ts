@@ -25,7 +25,7 @@ export class CartService {
   constructor(private productService: ProductsService) { }
 
   getCarts(): Cart[] {
-    return this.carts;
+    return [...this.carts.slice()];
   }
 
   getProductName(productId: string): string {
@@ -46,6 +46,28 @@ export class CartService {
       productCount: 1
     };
     this.carts.push(newCart);
-    return;
+  }
+
+  increaseCount(id:string) {
+    const cart = this.carts[this.carts.length- +id];
+    this.carts[this.carts.length- +id] = {
+      ...cart,
+      productCount: cart.productCount + 1
+    };
+  }
+
+  decreaseCount(id: string) {
+    const cart = this.carts[this.carts.length- +id];
+    if(cart.productCount === 1){
+     return this.deleteCart(cart.id);
+    }
+    this.carts[this.carts.length- +id] = {
+      ...cart,
+      productCount: cart.productCount - 1
+    };
+  }
+
+  deleteCart(id: string) {
+    this.carts.splice((+id)-1, 1);
   }
 }
