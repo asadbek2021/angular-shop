@@ -1,0 +1,5 @@
+<h3>{{product.name}}</h3>
+<p>Category: <em>{{product.category}}</em></p>
+<p>Price: <em>{{product.price}}</em></p>
+
+<button [disabled]="!product.isAvailable" (click)="onAddToCart()">Buy</button>

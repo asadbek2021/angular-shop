@@ -1,0 +1,6 @@
+<div *ngIf="carts.length; else emptyCartList">
+  <app-cart [cart]="cart" *ngFor="let cart of carts; trackBy: tracByCarts"></app-cart>
+</div>
+<ng-template #emptyCartList>
+  <p>Empty Cart List</p>
+</ng-template>
