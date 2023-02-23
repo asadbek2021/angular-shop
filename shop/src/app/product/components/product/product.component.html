@@ -1,12 +1,12 @@
 <div class="col-xs-3">
-  <mat-card class="product">
+  <mat-card class="product" [ngClass]="{disabled: !product.isAvailable}" [title]="!product.isAvailable ? 'Disabled': 'Available'">
       <mat-card-content class="product-content">
         <mat-card-title>{{product.name}}</mat-card-title>
       <p>Category: <em>{{product.category}}</em></p>
       <p>Price: <em>{{product.price}}</em></p>
       </mat-card-content>
       <mat-card-actions>
-        <button class="btn btn-primary" [disabled]="!product.isAvailable" (click)="onAddToCart()">Buy</button>
+        <button class="btn btn-primary" [disabled]="!product.isAvailable" (click)="onAddToCart()" [ngStyle]="{backgroundColor: product.isAvailable ? 'auto' : '#6fa4f2'}">Buy</button>
       </mat-card-actions>
   </mat-card>
 </div>

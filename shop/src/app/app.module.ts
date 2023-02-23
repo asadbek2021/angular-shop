@@ -6,12 +6,11 @@ import { AppComponent } from './app.component';
 import { ProductModule } from './product/product.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartModule } from './cart/cart.module';
-import { HeaderComponent } from './layout/header/header.component';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,6 +18,7 @@ import { HeaderComponent } from './layout/header/header.component';
     AppRoutingModule,
     ProductModule,
     CartModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

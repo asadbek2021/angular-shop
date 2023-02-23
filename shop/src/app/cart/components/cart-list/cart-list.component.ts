@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 
 import { CartService } from '../../services/cart.service';
 import { Cart } from '../../models/cart.model';
@@ -8,14 +8,13 @@ import { Cart } from '../../models/cart.model';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.scss'],
 })
-export class CartListComponent implements OnInit{
+export class CartListComponent implements OnInit, DoCheck{
 
   carts: Cart[]=[];
   totalCost: number = 0;
   totalQuantity: number = 0;
 
   constructor(private cartService: CartService){}
-
 
   ngOnInit() {
     this.carts = this.cartService.getCarts();
@@ -24,9 +23,11 @@ export class CartListComponent implements OnInit{
   }
 
   ngDoCheck() {
-    this.carts = this.cartService.getCarts();
-    this.totalCost = this.cartService.totalCost;
-    this.totalQuantity = this.cartService.totalQuantity;
+    if(this.totalCost !== this.cartService.totalCost || this.totalQuantity !== this.cartService.totalQuantity){
+      this.carts = this.cartService.getCarts();
+      this.totalCost = this.cartService.totalCost;
+      this.totalQuantity = this.cartService.totalQuantity;
+    }
   }
 
   tracByCarts(_: number, item: Cart) {

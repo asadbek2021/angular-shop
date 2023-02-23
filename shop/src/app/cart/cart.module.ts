@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MaterialModule } from "../shared/material.module";
 import { CartComponent, CartListComponent } from "./components";
+import { SharedModule } from "../shared/shared.module";
 
 
 
@@ -13,6 +14,7 @@ import { CartComponent, CartListComponent } from "./components";
   imports: [
     CommonModule,
     MaterialModule,
+    SharedModule,
   ],
   providers: [],
   exports: [
